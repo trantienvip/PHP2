@@ -64,19 +64,13 @@
         }
     </style>
 <body>
-    <?php
-
-    require('./item-list.php');
-    $user = Product::getAll();
-
-    ?>
 
     <div class="container">
     <table>
         <thead>
             <th>ID</th>
             <th>Name</th>
-            <th>Price</th>
+            <th>Gender</th>
             <th>Image</th>
         </thead>
         <tbody>
@@ -84,8 +78,8 @@
                 <tr>
                     <td><?= $item->id ?></td>
                     <td><?= $item->name ?></td>
-                    <td><?= $item->formatPrice() ?></td>
-                    <td><?= $item->image ?></td>
+                    <td><?= $item->covertRenderer() ?></td>
+                    <td><?= $item->avatar ?></td>
                 </tr>
             <?php endforeach ?>
         </tbody>

@@ -1,6 +1,6 @@
 <?php
 
-require('./BaseModel.php');
+require('./models/BaseModel.php');
 class Product extends BaseModel{
     var $table = 'products';
 
