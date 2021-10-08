@@ -1,0 +1,16 @@
+{    
+    
+    "name": "php2/asm2",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Utils\\": "utils/"
+        }
+    },
+    "require": {
+        "illuminate/database": "^8.63",
+        "illuminate/events": "^8.63",
+        "phroute/phroute": "^2.1",
+        "jenssegers/blade": "^1.4"
+    }
+}
