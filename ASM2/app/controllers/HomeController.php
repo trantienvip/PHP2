@@ -4,7 +4,7 @@ use App\Models\Post;
 
 class HomeController extends BaseController{
     public function index(){
-        $posts = Post::all();
+        $posts = Post::where('deleted_at', '!=', 'true')->get();
         $title = 'Trang chủ';
         $this->render('home.index', compact('posts', 'title'));
     }

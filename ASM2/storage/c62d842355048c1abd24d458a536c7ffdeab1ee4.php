@@ -39,7 +39,7 @@
                             <a href="<?php echo e(BASE_URL. 'cpanel/add'); ?>">Thêm bài viêt</a>
                         </li>
                         <li>
-                            <a href="#">Thùng rác</a>
+                            <a href="<?php echo e(BASE_URL. 'cpanel/bin'); ?>">Thùng rác <span class="badge badge-info badge-pill float-right"><?php if(isset($detected_at)): ?> <?php echo e(count($detected_at)); ?> <?php endif; ?></span></a>
                         </li>
                     </ul>
                 </li>
@@ -61,9 +61,7 @@
                         <li>
                             <a href="<?php echo e(BASE_URL. 'cpanel-topic/add'); ?>">Thêm topic</a>
                         </li>
-                        <li>
-                            <a href="#">Thùng rác</a>
-                        </li>
+                        
                     </ul>
                 </li>
             </ul>

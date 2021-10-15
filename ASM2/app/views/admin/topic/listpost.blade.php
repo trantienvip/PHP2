@@ -14,7 +14,7 @@
                 </tr>
                 </thead>
                 <tbody id="show">
-                    @foreach($posts as $p)
+                    @foreach($topic->post as $p)
                         <tr>
                             <td scope="row">{{$p->id}}</td>
                             <td scope="row">{{$p->title}}</td>

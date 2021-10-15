@@ -22,4 +22,7 @@
         height: 250px;
         object-fit: contain;
     }
+    .toggle-off{
+        background: red;
+    }
 </style>

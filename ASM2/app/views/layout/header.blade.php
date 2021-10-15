@@ -23,15 +23,17 @@
                         <a class="dropdown-item" href="#">SOL</a>
                     </div>
                 </li>
+                @if(!isset($_SESSION['auth']))
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Nổi bật</a>
+                    <a class="nav-link" href="{{BASE_URL.'login'}}">Đăng nhập</a>
                 </li>
-                <li class="nav-item name_ss_all">
+                @endif
+                {{-- <li class="nav-item name_ss_all">
                     @if(isset($_SESSION['auth']))
                     <a class="nav-link name_ss" href="{{BASE_URL.'cpanel'}}">Hi! {{$_SESSION['auth']['name']}}</a>
                     <a class="nav-link name_ss" href="{{BASE_URL.'logout'}}"> <i class="ti-export"></i></a>
                     @endif
-                </li>
+                </li> --}}
             </ul>
                 <i class="iconsearch ti-search"></i>
             <form action="{{BASE_URL.'search'}}" class="form-search" action="" method="get">
@@ -39,4 +41,17 @@
             </form>
         </div>
     </div>
+    @if(isset($_SESSION['auth']))
+    <div class="user_information">
+        <img class="user_information_image" src="@if(!empty($_SESSION['auth']['avatar'])){{PUBLIC_PATH.$_SESSION['auth']['avatar']}} @else {{PUBLIC_PATH}}assets\images\users\user-1.jpg @endif" alt="">
+        <div class="user_information_sm">
+            <h6 class="user_information_sm_hi">Welcome ! {{$_SESSION['auth']['name']}}</h6>
+            <ul class="user_information_sm_cp">
+                <li><a href="{{BASE_URL.'cpanel/information/'.$_SESSION['auth']['id']}}"> <i class="ti-user"></i> Information</a></li>
+                <li><a href="{{BASE_URL.'cpanel'}}"> <i class="ti-settings"></i> Cpanel Page</a></li>
+                <li><a href="{{BASE_URL.'logout'}}"> <i class="ti-export"></i> Logout</a></li>
+            </ul>
+        </div>
+    </div>
+    @endif
 </nav>

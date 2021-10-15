@@ -14,7 +14,7 @@
                 </tr>
                 </thead>
                 <tbody id="show">
-                    <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__currentLoopData = $topic->post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
                             <td scope="row"><?php echo e($p->id); ?></td>
                             <td scope="row"><?php echo e($p->title); ?></td>
@@ -30,4 +30,4 @@
         </div>
     </div>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('admin.admin-layout.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\TAIXAM\htdocs\PHP2\ASM2\app\views/admin/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin.admin-layout.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\TAIXAM\htdocs\PHP2\ASM2\app\views/admin/topic/listpost.blade.php ENDPATH**/ ?>

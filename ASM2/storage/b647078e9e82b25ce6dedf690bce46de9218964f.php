@@ -23,15 +23,12 @@
                         <a class="dropdown-item" href="#">SOL</a>
                     </div>
                 </li>
+                <?php if(!isset($_SESSION['auth'])): ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Nổi bật</a>
+                    <a class="nav-link" href="<?php echo e(BASE_URL.'login'); ?>">Đăng nhập</a>
                 </li>
-                <li class="nav-item name_ss_all">
-                    <?php if(isset($_SESSION['auth'])): ?>
-                    <a class="nav-link name_ss" href="<?php echo e(BASE_URL.'cpanel'); ?>">Hi! <?php echo e($_SESSION['auth']['name']); ?></a>
-                    <a class="nav-link name_ss" href="<?php echo e(BASE_URL.'logout'); ?>"> <i class="ti-export"></i></a>
-                    <?php endif; ?>
-                </li>
+                <?php endif; ?>
+                
             </ul>
                 <i class="iconsearch ti-search"></i>
             <form action="<?php echo e(BASE_URL.'search'); ?>" class="form-search" action="" method="get">
@@ -39,4 +36,17 @@
             </form>
         </div>
     </div>
+    <?php if(isset($_SESSION['auth'])): ?>
+    <div class="user_information">
+        <img class="user_information_image" src="<?php if(!empty($_SESSION['auth']['avatar'])): ?><?php echo e(PUBLIC_PATH.$_SESSION['auth']['avatar']); ?> <?php else: ?> <?php echo e(PUBLIC_PATH); ?>assets\images\users\user-1.jpg <?php endif; ?>" alt="">
+        <div class="user_information_sm">
+            <h6 class="user_information_sm_hi">Welcome ! <?php echo e($_SESSION['auth']['name']); ?></h6>
+            <ul class="user_information_sm_cp">
+                <li><a href="<?php echo e(BASE_URL.'cpanel/information/'.$_SESSION['auth']['id']); ?>"> <i class="ti-user"></i> Information</a></li>
+                <li><a href="<?php echo e(BASE_URL.'cpanel'); ?>"> <i class="ti-settings"></i> Cpanel Page</a></li>
+                <li><a href="<?php echo e(BASE_URL.'logout'); ?>"> <i class="ti-export"></i> Logout</a></li>
+            </ul>
+        </div>
+    </div>
+    <?php endif; ?>
 </nav><?php /**PATH D:\TAIXAM\htdocs\PHP2\ASM2\app\views/layout/header.blade.php ENDPATH**/ ?>

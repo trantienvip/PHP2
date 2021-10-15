@@ -9,4 +9,7 @@
         iconsearch.toggleClass('ti-close');
         formsearch.toggleClass('active')
     });
+    document.querySelector('.user_information_image').addEventListener('click', function(){
+        $('.user_information_sm').toggleClass('active');
+    })
 </script><?php /**PATH D:\TAIXAM\htdocs\PHP2\ASM2\app\views/layout/js.blade.php ENDPATH**/ ?>

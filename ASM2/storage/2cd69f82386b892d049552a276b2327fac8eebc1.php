@@ -22,5 +22,8 @@
         height: 250px;
         object-fit: contain;
     }
+    .toggle-off{
+        background: red;
+    }
 </style>
 <?php /**PATH D:\TAIXAM\htdocs\PHP2\ASM2\app\views/admin/admin-layout/style.blade.php ENDPATH**/ ?>

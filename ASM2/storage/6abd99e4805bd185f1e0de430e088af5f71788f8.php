@@ -1,0 +1,42 @@
+
+<?php $__env->startSection('content'); ?>
+<div class="row">
+    <div class="col-md-12">
+        <main class="admin-create-product-page">
+            <div class="container mt-4">
+                <div class="box-form-create">
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="nameProduct">Họ và tên:</label>
+                            <input type="text" class="form-control" name="name" value="<?php echo e($user->name); ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="nameProduct">Email:</label>
+                            <input type="text" class="form-control" name="email" value="<?php echo e($user->email); ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="priceProduct">Avatar: </label>
+                            <img class="image_edit" src="<?php if($user->avatar): ?> <?php echo e(PUBLIC_PATH.$user->avatar); ?> <?php else: ?> <?php echo e(PUBLIC_PATH .'uploads/no-image.jpg'); ?> <?php endif; ?>" width="300px">
+                            <input type="file" id="upImage" class="form-control" name="image" accept=".jpg, .jpeg, .png">
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary">Cập nhật</button>
+                    </form>
+                </div>
+                </div>
+            </div>
+            <script>
+                document.querySelector("#upImage").addEventListener("change", function(){
+                    var reader = new FileReader();
+                    reader.onload = function(){
+                        document.querySelector(".image_edit").src = reader.result;
+                    };
+                    reader.readAsDataURL(event.target.files[0]);
+                });
+            </script>
+        </main>
+
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.admin-layout.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\TAIXAM\htdocs\PHP2\ASM2\app\views/admin/information/update.blade.php ENDPATH**/ ?>

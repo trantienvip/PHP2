@@ -3,12 +3,21 @@ namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 use App\Models\Post;
 use App\Models\Topic;
+use App\Models\User;
 use Illuminate\Support\Str;
 class CpanelController extends BaseController{
     public function index(){
-        $posts = Post::all();
+        $posts = Post::where('deleted_at', '!=', 'true')->get();
+        $detected_at = Post::where('deleted_at', '!=', 'false')->get();
         $title = 'Trang quản lý';
-        $this->render('admin.index', compact('posts', 'title'));
+        $this->render('admin.index', compact('posts', 'title', 'detected_at'));
+    }
+
+    public function bin(){
+        $posts = Post::where('deleted_at', '!=', 'false')->get();
+        $detected_at = Post::where('deleted_at', '!=', 'false')->get();
+        $title = 'Thùng rác';
+        $this->render('admin.bin', compact('posts', 'title', 'detected_at'));
     }
 
     // POSTS
@@ -32,9 +41,30 @@ class CpanelController extends BaseController{
         $model->save();
         header('location: ' . BASE_URL .'cpanel');
     }
+    //restorePost
+    public function restorePost($id){
+        $model = Post::find($id);
+        $model->deleted_at = 'false';
+        $model->save();
+        header('Location: ' . BASE_URL .'cpanel');
+    }
+    //restorePostAll
+    public function restorePostAll() {
+        Post::where('deleted_at', '=' ,'true')
+                -> update(['deleted_at' => 'false']);
+        header("location: ".BASE_URL."cpanel");
+    }
+    //softdeletePost
+    public function softDeletePost($id){
+        $model = Post::find($id);
+        $model->deleted_at = 'true';
+        $model->save();
+        header('Location: ' . BASE_URL .'cpanel');
+    }
+    //DestroyPost
     public function DestroyPost($id){
         Post::destroy($id);
-        header('Location: ' . BASE_URL .'cpanel');
+        header('Location: ' . BASE_URL .'cpanel/bin');
     }
 
     //EDIT POST
@@ -44,6 +74,7 @@ class CpanelController extends BaseController{
         $title = 'Sửa bài viết';
         $this->render('admin.editPost', compact('title', 'model', 'topics'));
     }
+    
     public function saveEditPost($id){
         $model = Post::find($id);
         $model->fill($_POST);
@@ -91,7 +122,20 @@ class CpanelController extends BaseController{
         $model->save();
         header('location: ' . BASE_URL .'cpanel-topic');
     }
-    //DestroyTopic
+
+    public function saveStatus(){
+        $id = $_POST['id'];
+        $model = Topic::find($id);
+        $model->status = $_POST['status'];
+        $model->save();
+        
+    }
+    public function listPostTopic($id){
+        $topic = Topic::find($id);
+        $title = 'Danh sách bài viết';
+        $this->render('admin.topic.listpost', compact('topic', 'title'));
+    }
+    //Destroy Topic
     public function DestroyTopic($id) {
         Topic::destroy($id);
         header('location: ' . BASE_URL .'cpanel-topic');

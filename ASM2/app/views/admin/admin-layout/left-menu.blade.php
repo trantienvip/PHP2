@@ -39,7 +39,7 @@
                             <a href="{{BASE_URL. 'cpanel/add'}}">Thêm bài viêt</a>
                         </li>
                         <li>
-                            <a href="#">Thùng rác</a>
+                            <a href="{{BASE_URL. 'cpanel/bin'}}">Thùng rác <span class="badge badge-info badge-pill float-right">@if (isset($detected_at)) {{count($detected_at)}} @endif</span></a>
                         </li>
                     </ul>
                 </li>
@@ -61,9 +61,9 @@
                         <li>
                             <a href="{{BASE_URL. 'cpanel-topic/add'}}">Thêm topic</a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="#">Thùng rác</a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
             </ul>

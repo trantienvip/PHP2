@@ -6,7 +6,12 @@ use App\Models\User;
 class LoginController extends BaseController{
     public function login(){
         $title = 'Đăng nhập';
-        $this->render('home.login', compact('title'));
+        if (isset($_SESSION['auth'])) {
+            header('location: ' .BASE_URL.'cpanel');
+            die;
+        }else{
+            $this->render('home.login', compact('title'));
+        }
     }
 
     public function postLogin(){
@@ -25,7 +30,7 @@ class LoginController extends BaseController{
             die;
         }else{
             $title = 'Đăng nhập';
-            $msg = "tài khoản/mật khẩu không chính xác";
+            $msg = "Tài khoản/mật khẩu không chính xác";
             $this->render('home.login', compact('msg', 'title'));
         }
     }

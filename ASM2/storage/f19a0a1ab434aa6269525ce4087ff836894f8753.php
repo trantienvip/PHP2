@@ -17,4 +17,5 @@
 
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <script src="https://code.jquery.com/jquery-migrate-3.3.2.min.js"></script>
-<?php /**PATH D:\TAIXAM\htdocs\PHP2\ASM2\app\views/admin/admin-layout/js.blade.php ENDPATH**/ ?>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <?php /**PATH D:\TAIXAM\htdocs\PHP2\ASM2\app\views/admin/admin-layout/js.blade.php ENDPATH**/ ?>

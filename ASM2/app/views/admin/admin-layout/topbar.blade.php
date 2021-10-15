@@ -18,7 +18,7 @@
 
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                <img src="@if(isset($_SESSION['auth'])){{$_SESSION['auth']['avatar']}} @else {{PUBLIC_PATH}}assets\images\users\user-1.jpg @endif" alt="user-image" class="rounded-circle">
+                <img src="@if(!empty($_SESSION['auth']['avatar'])){{PUBLIC_PATH.$_SESSION['auth']['avatar']}} @else {{PUBLIC_PATH}}assets\images\users\user-1.jpg @endif" alt="user-image" class="rounded-circle">
                 <span class="pro-user-name ml-1">
                     @if(isset($_SESSION['auth']))
                     {{$_SESSION['auth']['name']}}
