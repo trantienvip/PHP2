@@ -71,6 +71,9 @@ class Routing{
 
         $router->get('/signin', [SigninController::class, 'signin']);
         $router->post('/signin', [SigninController::class, 'postSignin']);
+
+        //API
+        $router->get('/api', [HomeController::class, 'api']);
         
 
         # NB. You can cache the return value from $router->getData() so you don't have to create the routes each request - massive speed gains
